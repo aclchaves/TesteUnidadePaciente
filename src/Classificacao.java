@@ -11,10 +11,14 @@ private int code;
 		this.code = code;
 	}
 	
-	public int getCode() {
+	public Integer getCode() {
 		return code;
-	}
+	}	
 	
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+
 	public static Classificacao valueOf(int code) {
 		for (Classificacao value : Classificacao.values()) {
 			if(value.getCode() == code) {

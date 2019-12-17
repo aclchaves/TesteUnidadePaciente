@@ -36,7 +36,24 @@ public class Paciente implements Comparable<Paciente>{
 	
 	public void setRisco(Classificacao risco) {
 		this.risco = risco;
-	}	
+	}
+	
+	@Override
+	public int compareTo(Paciente paciente) {
+		return this.getRisco().getCode().equals(paciente.getRisco().getCode()) ? 0 : (
+				this.getRisco().getCode() > paciente.getRisco().getCode() ? 1 : -1);
+				
+		/*if((this.risco.getCode() > paciente.getRisco().getCode())) {
+			return 1;
+		}else if((this.risco.getCode() < paciente.getRisco().getCode())) {
+			return -1;	
+		}else {		
+			return 1;
+		}*/
+	}
+	
+	
+	
 	
 
 	@Override
@@ -45,7 +62,6 @@ public class Paciente implements Comparable<Paciente>{
 		int result = 1;
 		result = prime * result + idade;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((risco == null) ? 0 : risco.hashCode());
 		return result;
 	}
 
@@ -65,27 +81,12 @@ public class Paciente implements Comparable<Paciente>{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (risco != other.risco)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Paciente [nome=" + nome + ", risco=" + risco + "]";
-	}
-
-	@Override
-	public int compareTo(Paciente paciente) {
-		if(this.risco.getCode() >= paciente.getRisco().getCode()) {
-			return 1;
-		}else if(this.risco.getCode() < paciente.getRisco().getCode()) {
-			return -1;
-		}else {
-			return 0;
-		}
-	}
-	
-	
+	}	
 
 }
